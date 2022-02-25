@@ -1,0 +1,6 @@
+hello
+unix
+file
+input
+output
+stream
