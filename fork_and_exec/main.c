@@ -19,17 +19,25 @@ void fork_and_execvp(char *bin, char *argv[]) {
         } else {
             // successed exec always no any return.
             // so this line above is no effect.
-            printf("exec cat finished.\n");
+            printf("exec %s finished.\n", bin);
         }
     } else {
-        printf("parent: do fork & exec %s success.\n", bin);
+        int stat_loc;
+        if ((pid = wait(&stat_loc)) >= 0) {
+            // wait for child process terminated.
+            printf("child process %d finished.\n", pid);
+        }
     }
 }
 
 int main(int argc,char *argv[]) {
+    printf("----- exec echo -----\n");
     fork_and_execvp("echo", (char *[]){"echo", "hello", "exec(...)", NULL});
+
+    printf("----- exec cat -----\n");
     fork_and_execvp("/bin/cat", (char *[]){"cat", "Makefile", NULL});
 
-    printf("parent: do fork & exec finished.\n");
+    printf("----- end -----\n");
+    printf("do fork & exec finished.\n");
 }
 
