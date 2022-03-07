@@ -1,6 +1,6 @@
-# fork and print
+# fork and exec
 
-fork a new child process and print greeting.
+fork a new child process and exec binary file.
 
 # How
 
