@@ -6,5 +6,5 @@ environments: unix(MacOS Dawwin).
 
 ## How
 
-see respective `README.md` in root dir of demo.
+see demos respective `README.md`.
 
