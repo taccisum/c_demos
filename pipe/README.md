@@ -1,6 +1,6 @@
-# Term
+# Pipe
 
-simple dynamic output in tty terminal.
+sample about pipe.
 
 # How
 
