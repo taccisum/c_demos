@@ -1,5 +1,7 @@
 # Select
 
+<span style="color:red">[**Deprecated!**]</span> see [named pipe edition](../select_pipe/README.md).
+
 i/o multiplexing sample. unix select() edition.
 
 ## How
