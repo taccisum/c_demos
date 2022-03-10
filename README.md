@@ -2,7 +2,7 @@
 
 clang demos.
 
-environments: unix(MacOS Dawwin).
+environments: unix(MacOS Darwin).
 
 ## How
 
