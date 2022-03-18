@@ -1,5 +1,7 @@
 # C Demos
 
+![ci status](https://github.com/taccisum/c_demos/actions/workflows/ci.yml/badge.svg)
+
 c language demos.
 
 ## How
