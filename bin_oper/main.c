@@ -47,6 +47,24 @@ int bin_to_dec(char *bin) {
     return dec;
 }
 
+int to_oc(char *binary_str, char *oc_str, int len) {
+    int dec = bin_to_dec(binary_str);
+    int oc = dec ^ INT_MAX;      // all bits xor 1, to one's complement
+
+    itob(oc, oc_str, len);
+    return 0;
+}
+
+int to_tc(char *binary_str, char *tc_str, int len) {
+    int dec = bin_to_dec(binary_str);
+    int oc = dec ^ INT_MAX;      // all bits xor 1, to one's complement
+    int tc = oc + 1;        // plus 1 , to two's complement */
+
+    itob(tc, tc_str, len);
+    return 0;
+}
+
+#ifndef __ut
 int main(int argc,char *argv[]) {
     int is_td = 0;
     int is_oc = 0;
@@ -89,24 +107,17 @@ int main(int argc,char *argv[]) {
 
     if (is_oc) {
         // take one's complement
-        int dec = bin_to_dec(binary_str);
-        int oc = dec ^ INT_MAX;      // all bits xor 1, to one's complement
-
         char *s = malloc((len + 1) * sizeof(char));
-        itob(oc, s, len);
+        to_oc(binary_str, s, len);
         printf("to one's complement: %s(dec: %d)\n", s, bin_to_dec(s));
     }
 
     if (is_tc) {
         // take two's complement
-        int dec = bin_to_dec(binary_str);
-        int oc = dec ^ INT_MAX;      // all bits xor 1, to one's complement
-        int tc = oc + 1;        // plus 1 , to two's complement */
-
         char *s = malloc((len + 1) * sizeof(char));
-        itob(tc, s, len);
-
+        to_tc(binary_str, s, len);
         printf("to two's complement: %s(dec: %d)\n", s, bin_to_dec(s));
     }
 }
+#endif
 
