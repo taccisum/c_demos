@@ -6,7 +6,9 @@ on:
       - master
 jobs:
   unit-test:
-    runs-on: ubuntu-latest
+    strategy: 
+      matrix: ['macos-latest', 'ubuntu-latest']
+    runs-on: 
     steps:
       - uses: actions/checkout@v2
       - run: cd ut && make && ./main
