@@ -5,7 +5,9 @@ run unit test.
 ## How
 
 ```bash
+# only make will run all test cases
 $ make
-$ ./main
+# run single test suite(see Makefile for available targets)
+$ make [main, bq, ...]
 ```
 
