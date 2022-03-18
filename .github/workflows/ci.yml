@@ -7,8 +7,9 @@ on:
 jobs:
   unit-test:
     strategy: 
-      matrix: ['macos-latest', 'ubuntu-latest']
-    runs-on: 
+      matrix: 
+        os: ['macos-latest', 'ubuntu-latest']
+    runs-on: {{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - run: cd ut && make && ./main
