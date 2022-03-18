@@ -58,9 +58,33 @@ MU_TEST_SUITE(bin_oper) {
 }
 /* bin_oper.c test suite end */
 
+/* join.c test suite start */
+#include "../join/main.c"
+
+void *runnable() {
+    t_exit();
+    return 0;
+}
+
+MU_TEST(join_index) {
+    pthread_t t;
+    pthread_create(&t, NULL, runnable, NULL);
+    pthread_create(&t, NULL, runnable, NULL);
+    t_join(2);
+    mu_check(dones == 2);
+}
+
+MU_TEST_SUITE(join) {
+	MU_RUN_TEST(join_index);
+}
+/* bin_oper.c test suite end */
+
 int main(int argc, char *argv[]) {
     printf("Run test suite for 'bin_oper.c':\n");
     MU_RUN_SUITE(bin_oper);
+    printf("Run test suite for 'join.c':\n");
+    MU_RUN_SUITE(join);
+
 	MU_REPORT();
 	return MU_EXIT_CODE;
 }
