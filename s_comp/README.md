@@ -22,7 +22,7 @@ $ ./main 8-3+2-4
 
 A simple implementation of lexeme parser.
 
-It can parse patterns above(auto skip empty space between lexemes):
+It can parse patterns below(auto skip empty space between lexemes):
 
 - ID: letter(letter|digit)*
 - Number: digit+
