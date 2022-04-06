@@ -5,7 +5,7 @@
 #include "../lib/minunit.h"
 
 /* test suite start */
-#include "lexan.c"
+#include "lexan_fa.c"
 
 int p = 1;
 char *_pscan() {
@@ -60,6 +60,7 @@ MU_TEST(scan_t) {
 }
 
 MU_TEST_SUITE(def) {
+    init_sf_tbl();
 	MU_RUN_TEST(gc_t);
 	MU_RUN_TEST(take_t);
 	MU_RUN_TEST(scan_t);
@@ -67,7 +68,7 @@ MU_TEST_SUITE(def) {
 /* test suite end */
 
 int main(int argc, char *argv[]) {
-    printf("Run test suite for 'lexan.c':\n");
+    printf("Run test suite for 'lexan_fa.c':\n");
     MU_RUN_SUITE(def);
 
 	MU_REPORT();

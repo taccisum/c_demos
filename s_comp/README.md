@@ -41,5 +41,7 @@ $ ./lexan "1+2-3*4/x0"
 x0(ID)
 ```
 
+### FA(Finite Automate) edition
 
+just replace binary `lexan` with `lexan_fa`
 
