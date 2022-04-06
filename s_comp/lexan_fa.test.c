@@ -60,7 +60,6 @@ MU_TEST(scan_t) {
 }
 
 MU_TEST_SUITE(def) {
-    init_sf_tbl();
 	MU_RUN_TEST(gc_t);
 	MU_RUN_TEST(take_t);
 	MU_RUN_TEST(scan_t);

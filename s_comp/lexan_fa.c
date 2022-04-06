@@ -129,7 +129,20 @@ void take() {
     }
 }
 
-int sf_tbl[4][4];
+/*
+   defines state-flow table:
+            digit  char  operator  other
+   ε         num    id     oper     -
+   id        id     id      -       -
+   num       num    -       -       -
+   oper       -     -       -       -
+ */
+int sf_tbl[4][4] = {
+    { NUM, ID, OPER, -1 },
+    { ID,  ID, -2,   -2 },
+    { NUM, -2, -2,   -2 },
+    { -2,  -2, -2,   -2 },
+};
 
 /* move to next state */
 int move(int s, char c) {
@@ -173,42 +186,10 @@ void scan() {
     take();
 }
 
-/* init state-flow table */
-void init_sf_tbl() {
-    /*
-                digit  char  operator  other
-       ε         num    id     oper     -
-       id        id     id      -       -
-       num       num    -       -       -
-       oper       -     -       -       -
-     */
-    sf_tbl[0][0] = NUM;
-    sf_tbl[0][1] = ID;
-    sf_tbl[0][2] = OPER;
-    sf_tbl[0][3] = -1;
-
-    sf_tbl[1][0] = ID;
-    sf_tbl[1][1] = ID;
-    sf_tbl[1][2] = -2;
-    sf_tbl[1][3] = -2;
-
-    sf_tbl[2][0] = NUM;
-    sf_tbl[2][1] = -2;
-    sf_tbl[2][2] = -2;
-    sf_tbl[2][3] = -2;
-
-    sf_tbl[3][0] = -2;
-    sf_tbl[3][1] = -2;
-    sf_tbl[3][2] = -2;
-    sf_tbl[3][3] = -2;
-}
-
 #ifndef __ut
 char *source = "hello world   i18n if else 7*2+3-4/1"; int now = 0;
 
 int main(int argc,char *argv[]) {
-    init_sf_tbl();
-
     /* init(source); */
     init(argv[1]);
 
