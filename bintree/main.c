@@ -11,6 +11,8 @@ struct BinaryTree
     struct BinaryTree *right;
 };
 
+typedef struct BinaryTree btree_t;
+
 void preorder(struct BinaryTree *t) {
     printf("%d", t->val);
     if (t->left != NULL) preorder(t->left);
@@ -30,12 +32,12 @@ void postorder(struct BinaryTree *t) {
 }
 
 int main(int argc,char *argv[]) {
-    struct BinaryTree r = {0};
-    struct BinaryTree r_l = {1};
-    struct BinaryTree r_r = {2};
-    struct BinaryTree r_ll = {7};
-    struct BinaryTree r_lr = {5};
-    struct BinaryTree r_rr = {8};
+    btree_t r = {0};
+    btree_t r_l = {1};
+    btree_t r_r = {2};
+    btree_t r_ll = {7};
+    btree_t r_lr = {5};
+    btree_t r_rr = {8};
     r.left = &r_l;
     r.right = &r_r;
 
