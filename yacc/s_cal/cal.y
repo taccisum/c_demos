@@ -17,10 +17,6 @@
 }
 
 %token <ival> NUM
-%token PLUS
-%token MINUS
-%token MULTI
-%token DIVIDE
 %token EXIT
 
 // define type for non-terminal symbols
@@ -35,12 +31,12 @@ calculator: calculator line
 line: expr ';'            { newline($1); }
     | EXIT                { printf("byebye."); exit(0); }
     ;
-expr: expr PLUS   term    { $$ = mknode('+', $1, $3); }
-    | expr MINUS  term    { $$ = mknode('-', $1, $3); }
+expr: expr '+' term       { $$ = mknode('+', $1, $3); }
+    | expr '-' term       { $$ = mknode('-', $1, $3); }
     | term
     ;
-term: term MULTI  factor  { $$ = mknode('*', $1, $3); }
-    | term DIVIDE factor  { $$ = mknode('/', $1, $3); }
+term: term '*' factor     { $$ = mknode('*', $1, $3); }
+    | term '/' factor     { $$ = mknode('/', $1, $3); }
     | factor
     ;
 factor: '(' expr ')'      { $$ = $2; }

@@ -4,16 +4,10 @@
  */
 %{
 #include "y.tab.h"
-
-char* opplus = "plus";
 %}
 
 /* 正则声明部分 */
 numb         [1-9][0-9]*
-op_plus      \+
-op_minus     \-
-op_multi     \*
-op_divide    \/
 
 /* 
     规则部分，写在 %% xx %% 内。
@@ -24,12 +18,8 @@ op_divide    \/
 %%
 \+[0-9]{1,2}-137[0-9]{8}       { printf("phone num: %s", yytext); }
 {numb}                         { yylval.ival=atoi(yytext); return NUM; }
-{op_plus}                      { return PLUS; }
-{op_minus}                     { return MINUS; }
-{op_multi}                     { return MULTI; }
-{op_divide}                    { return DIVIDE; }
+[\+\-\*\/\(\);]                { return yytext[0]; }
 (\ )                           { }
-[;\(\)]                        { return yytext[0]; }
 "exit"                         { return EXIT; }
 .                              { }
 %%
