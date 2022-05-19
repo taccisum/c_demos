@@ -16,7 +16,6 @@ numb         [1-9][0-9]*
     左部是匹配规则，右部是动作
  */
 %%
-\+[0-9]{1,2}-137[0-9]{8}       { printf("phone num: %s", yytext); }
 {numb}                         { yylval.ival=atoi(yytext); return NUM; }
 [\+\-\*\/\(\);]                { return yytext[0]; }
 (\ )                           { }
