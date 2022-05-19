@@ -1,6 +1,11 @@
 # Simple Calculator
 
-this is a simple calculator write with yacc(bison).
+This is a simple calculator write with yacc(bison).
+
+Supports:
+
+- Operator: + - * / ( )
+- Operand: natural number[0, +∞]
 
 # How
 
